@@ -2,10 +2,10 @@
 rm(list=ls())
 
 # Change the working directory to the current folder to process
-setwd("~/OneDrive - nd.edu/underc-field-2019/gcData/rawData/batchProcessed_190527/")
+setwd("~/OneDrive - nd.edu/underc-field-2019/gcData/gc2019underc/rawData/batchProcessed_190530/")
 
 # Read in functions and libraries
-source("../../gc2019underc/code/raw2summaries_UNDERC2019.R")
+source("../../code/raw2summaries_UNDERC2019.R")
 library(tidyverse)
 library(reshape2)
 
@@ -14,9 +14,9 @@ standardsFile=read.table("~/OneDrive - nd.edu/underc-field-2019/data/GCstandards
 
 # Get vectors of all the run folders and logs 
 runs=list.files()
-logs=list.files("../../gc2019underc/logs/")
+logs=paste0("run", runs, ".csv")
 
-i=10
+i=2
 
 for(i in 1:length(runs)){
   #read in runfile, process, and reformat for merging with summary file 
@@ -30,7 +30,7 @@ for(i in 1:length(runs)){
   temp=merge(tempRT, tempArea, by="runName")
   
   #read in logfile
-  tempLog=read.csv(paste0("../../gc2019underc/logs/", logs[i]), stringsAsFactors = F)
+  tempLog=read.csv(paste0("../../logs/", logs[i]), stringsAsFactors = F)
   
   #merge log file with data 
   tempSum=merge(tempLog, temp, by="runName")

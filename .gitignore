@@ -1,2 +1,9 @@
-.GS_Store
+.DS_Store
 .Rproj.user
+currentDB/.DS_Store
+logs/.DS_Store
+standardCurves/.DS_Store
+templates/.DS_Store
+code/.DS_Store
+rawData/.DS_Store
+summaries/.DS_Store
