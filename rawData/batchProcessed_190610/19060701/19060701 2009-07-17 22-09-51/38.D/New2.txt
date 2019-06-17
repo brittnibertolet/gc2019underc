@@ -1,0 +1,44 @@
+Batch Run # 38 of 40
+Data File C:\CHEM32\1\DATA\SUMMER 2019\19060701\19060701 2009-07-17 22-09-51\38.D
+Sample Name: 38
+Instrument 1 7/20/2009 4:17:37 PM Brittni
+
+=====================================================================
+Acq. Operator   : Brittni                        Seq. Line :  38
+Acq. Instrument : Instrument 1                    Location : Vial 38
+Injection Date  : 7/18/2009 12:12:52 AM                Inj :   1
+                                                Inj Volume : 5 µl
+Acq. Method     : C:\CHEM32\1\DATA\19060701\19060701 2009-07-17 22-09-51\FID_TCD_2019.M
+Last changed    : 7/17/2009 10:09:50 PM by Brittni
+Analysis Method : C:\CHEM32\1\DATA\SUMMER 2019\19060701\19060701 2009-07-17 22-09-51\FID_TCD_
+                  2019.M (Sequence Method)
+Last changed    : 7/20/2009 4:15:46 PM by Brittni
+                  (modified after loading)
+Method Info     : Method for FID and TCD columns 
+                  Created by Nate Heili
+                  Date: July 25, 2018
+
+=====================================================================
+                         Area Percent Report                         
+=====================================================================
+
+Sorted By             :      Retention Time
+Multiplier:                   :      1.0000
+Dilution:                     :      1.0000
+Use Multiplier & Dilution Factor with ISTDs
+
+Signal 1: FID2 B, 
+Signal 2: TCD1 A, 
+
+Peak RetTime Sig Type    Area      Height     Area  
+  #   [min]                                     %
+----|-------|---|----|----------|----------|--------|
+   1   0.399  2  BB   4.54162e-1 8.62589e-2  0.01309
+   2   1.247  2  BV   3303.77637 2259.94824 95.19720
+   3   1.439  2  VB     10.29147    2.29126  0.29655
+   4   1.450  1  BB    131.24420   32.57947  3.78176
+   5   2.191  2  BB     24.68935    7.24737  0.71142
+Totals :              3470.45556 2302.15260
+
+=====================================================================
+                          *** End of Report ***

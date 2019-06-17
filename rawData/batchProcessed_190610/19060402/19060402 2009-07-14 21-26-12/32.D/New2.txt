@@ -1,0 +1,42 @@
+Batch Run # 32 of 36
+Data File C:\CHEM32\1\DATA\SUMMER 2019\19060402\19060402 2009-07-14 21-26-12\32.D
+Sample Name: 32
+Instrument 1 7/20/2009 4:00:41 PM Brittni
+
+=====================================================================
+Acq. Operator   : Brittni                        Seq. Line :  32
+Acq. Instrument : Instrument 1                    Location : Vial 32
+Injection Date  : 7/15/2009 12:37:51 AM                Inj :   1
+                                                Inj Volume : 5 µl
+Acq. Method     : C:\CHEM32\1\DATA\19060402\19060402 2009-07-14 21-26-12\FID_TCD_2019.M
+Last changed    : 7/14/2009 5:15:07 PM by Brittni
+Analysis Method : C:\CHEM32\1\DATA\SUMMER 2019\19060402\19060402 2009-07-14 21-26-12\FID_TCD_
+                  2019.M (Sequence Method)
+Last changed    : 7/20/2009 3:58:59 PM by Brittni
+                  (modified after loading)
+Method Info     : Method for FID and TCD columns 
+                  Created by Nate Heili
+                  Date: July 25, 2018
+
+=====================================================================
+                         Area Percent Report                         
+=====================================================================
+
+Sorted By             :      Retention Time
+Multiplier:                   :      1.0000
+Dilution:                     :      1.0000
+Use Multiplier & Dilution Factor with ISTDs
+
+Signal 1: FID2 B, 
+Signal 2: TCD1 A, 
+
+Peak RetTime Sig Type    Area      Height     Area  
+  #   [min]                                     %
+----|-------|---|----|----------|----------|--------|
+   1   1.243  2  BB S 5256.90869 3540.61450 99.83928
+   2   1.453  1  BB      3.01552 6.83395e-1  0.05727
+   3   2.193  2  BB      5.44709    1.57072  0.10345
+Totals :              5265.37130 3542.86862
+
+=====================================================================
+                          *** End of Report ***

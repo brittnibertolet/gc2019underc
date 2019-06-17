@@ -2,7 +2,7 @@
 rm(list=ls())
 
 # Change the working directory to the current folder to process
-setwd("~/OneDrive - nd.edu/underc-field-2019/gcData/gc2019underc/rawData/batchProcessed_190530/")
+setwd("~/OneDrive - nd.edu/underc-field-2019/gc2019underc/rawData/batchProcessed_190610/")
 
 # Read in functions and libraries
 source("../../code/raw2summaries_UNDERC2019.R")
@@ -16,8 +16,7 @@ standardsFile=read.table("~/OneDrive - nd.edu/underc-field-2019/data/GCstandards
 runs=list.files()
 logs=paste0("run", runs, ".csv")
 
-i=2
-
+# Calculate the concentration with the for loop
 for(i in 1:length(runs)){
   #read in runfile, process, and reformat for merging with summary file 
   print(runs[i])
@@ -44,7 +43,7 @@ for(i in 1:length(runs)){
   stds$CO2ppm=standardsFile$CO2concentration_ppm[match(stds$subsampleClass, standardsFile$gcStdID)]
   
   #create the standard curve plots 
-  pdf(paste0("~/OneDrive - nd.edu/underc-field-2019/gcData/gc2019underc/standardCurves/", runs[i], ".pdf"))
+  pdf(paste0("~/OneDrive - nd.edu/underc-field-2019/gc2019underc/standardCurves/", runs[i], ".pdf"))
   par(mfrow=c(2,2))
   plot(stds$CH4area, stds$CH4ppm, main=paste("CH4 all", runs[i], sep=" - "), xlab="area", ylab="ppm")
   plot(stds$CH4area[stds$subsampleClass!="standard038"], stds$CH4ppm[stds$subsampleClass!="standard038"], main=paste("CH4 sub", runs[i], sep=" - "), xlab="area", ylab="ppm")
@@ -63,12 +62,24 @@ for(i in 1:length(runs)){
   tempSum$CH4ppm=0
   tempSum$CO2ppm=0
   
-  tempSum$CH4ppm[tempSum$CH4area>500]=CH4fitall$coefficients[1]+CH4fitall$coefficients[2]*tempSum$CH4area[tempSum$CH4area>500]
-  tempSum$CH4ppm[tempSum$CH4area<500]=0+CH4fitsub$coefficients[1]*tempSum$CH4area[tempSum$CH4area<500]
-  
-  tempSum$CO2ppm[tempSum$CO2area>50]=CO2fitall$coefficients[1]+CO2fitall$coefficients[2]*tempSum$CO2area[tempSum$CO2area>50]
-  tempSum$CO2ppm[tempSum$CO2area<50]=0+CO2fitsub$coefficients[1]*tempSum$CO2area[tempSum$CO2area<50]
-  
+  for(j in 1:nrow(tempSum)){
+    # fill CH4 ppm 
+    if(!(is.na(tempSum$CH4area[j]))){
+      if(tempSum$CH4area[j]>500){
+        tempSum$CH4ppm[j]=CH4fitall$coefficients[1]+CH4fitall$coefficients[2]*tempSum$CH4area[j]
+      }else{
+        tempSum$CH4ppm[j]=0+CH4fitsub$coefficients[1]*tempSum$CH4area[j]
+      }
+    }
+    # fill CO2 ppm 
+    if(!(is.na(tempSum$CO2area[j]))){
+      if(tempSum$CO2area[j]>500){
+        tempSum$CO2ppm[j]=CO2fitall$coefficients[1]+CO2fitall$coefficients[2]*tempSum$CO2area[j]
+      }else{
+        tempSum$CO2ppm[j]=0+CO2fitsub$coefficients[1]*tempSum$CO2area[j]
+      }
+    }
+  }
   
   #calculate umol L-1
   ppm=tempSum
@@ -152,6 +163,7 @@ for(i in 1:length(runs)){
   ppm$CH4original_umolL[as.character(ppm$subsampleClass)=="methSlurryPtreatment"]=ppm$CH4ppm[as.character(ppm$subsampleClass)=="methSlurryPtreatment"]/(0.0821*(equilT+273.15))
   ppm$CO2original_umolL[as.character(ppm$subsampleClass)=="methSlurryPtreatment"]=ppm$CO2ppm[as.character(ppm$subsampleClass)=="methSlurryPtreatment"]/(0.0821*(equilT+273.15))
   
-  write.csv(file=paste0("~/OneDrive - nd.edu/underc-field-2019/gcData/gc2019underc/summaries/", runs[i], ".csv"), x=ppm, row.names = F)
+  write.csv(file=paste0("~/OneDrive - nd.edu/underc-field-2019/gc2019underc/summaries/", runs[i], ".csv"), x=ppm, row.names = F)
   
 }
+
