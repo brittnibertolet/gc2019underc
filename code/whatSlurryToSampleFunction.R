@@ -17,7 +17,7 @@ whatToSample=function(data=sched, date=today){
 
 # Set arguments for the whatToSample function
 sched=read.csv("slurrySamplingSchedule.csv", stringsAsFactors = F)
-today="6/13/19"
+today="6/18/19"
 
 # Run function
 whatToSample()
